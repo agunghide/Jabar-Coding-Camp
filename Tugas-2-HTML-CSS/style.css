@@ -1,0 +1,78 @@
+html,
+body {
+  font-family: monospace;
+  color: rgb(48, 48, 48);
+  background-color: rgb(228, 228, 228);
+  font-size: 1.15em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.centered {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.card {
+  background: rgb(71, 217, 157);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(71, 217, 157, 1) 0%,
+    rgba(180, 255, 108, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(71, 217, 157, 1) 0%,
+    rgba(180, 255, 108, 1) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(71, 217, 157, 1) 0%,
+    rgba(180, 255, 108, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#47d99d",endColorstr="#b4ff6c",GradientType=1);
+
+  border-radius: 20px;
+  box-shadow: 4px 6px 3px rgba(128, 128, 128, 0.712);
+  padding: 0 20px 20px 20px;
+  max-width: 40%;
+}
+
+.table {
+  width: 100%;
+}
+
+.table tr td {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.table tr:last-child td {
+  padding-top: 1px;
+  padding-bottom: 0;
+}
+.table tr:first-child td {
+  padding-top: 0;
+  padding-bottom: 1px;
+}
+
+.table tr:first-child td:nth-child(4) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.profile {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  margin-left: 35px;
+  border: 1px solid rgba(78, 255, 122, 0.856);
+  vertical-align: middle;
+  border-radius: 7px;
+}
