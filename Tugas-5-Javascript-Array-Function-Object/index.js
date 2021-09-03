@@ -39,6 +39,7 @@ var hitung_2 = hitung_huruf_vokal("Iqbal")
 console.log(hitung_1 , hitung_2)
 
 //Soal 4
+
 function hitung(nilai){
     return nilai * 2 - 2
 }
