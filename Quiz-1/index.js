@@ -95,3 +95,19 @@ var bulan = 2
 var tahun = 2020
 
 next_date(tanggal , bulan , tahun)
+
+//Soal 2 (Judul : Function Penghitung Jumlah Kata)
+function jumlah_kata(kalimat){
+    var jumlah_kata = kalimat.split(' ')
+    jumlah_kata = jumlah_kata.filter(function(item){
+        return item != "";
+     })
+    console.log(jumlah_kata.length)
+}
+
+var kalimat_1 = " Halo nama saya Muhammad Iqbal Mubarok "
+var kalimat_2 = "Saya Iqbal"
+
+
+jumlah_kata(kalimat_1)
+jumlah_kata(kalimat_2)
