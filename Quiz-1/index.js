@@ -2,73 +2,143 @@
 function next_date(tanggal, bulan, tahun){
     var bulanStr
     
-
-    if(bulan % 2 == 1){ //Cek bulan Ganjil
-        if(tanggal >= 31){ //Cek Tanggal 31
-            tanggal = 1
-            if(bulan >= 12){
-                bulan = 1
-                tahun++
+    if(bulan < 8){
+        if(bulan % 2 == 1){ //Cek bulan Ganjil
+            if(tanggal >= 31){ //Cek Tanggal 31
+                tanggal = 1
+                if(bulan >= 12){
+                    bulan = 1
+                    tahun++
+                }else{
+                    bulan++
+                }
             }else{
-                bulan++
+                tanggal++
             }
         }else{
-            tanggal++
+            if(tahun % 4 == 0){ // Cek Tahun Kabisat
+                if(bulan==2){
+                    if(tanggal >= 29){ //Cek tanggal 29
+                        tanggal = 1
+                        if(bulan >= 12){
+                            bulan = 1
+                            tahun++
+                        }else{
+                            bulan++
+                        }
+                    }else{
+                        tanggal++
+                    }
+                }else{
+                    if(tanggal >= 30){ //Cek tanggal 30
+                        tanggal = 1
+                        if(bulan >= 12){
+                            bulan = 1
+                            tahun++
+                        }else{
+                            bulan++
+                        }
+                    }else{
+                        tanggal++
+                    }
+                }
+            } else{
+                if(bulan==2){
+                    if(tanggal >= 28){ //Cek tanggal 28
+                        tanggal = 1
+                        if(bulan >= 12){
+                            bulan = 1
+                            tahun++
+                        }else{
+                            bulan++
+                        }
+                    }else{
+                        tanggal++
+                    }
+                }else{
+                    if(tanggal >= 30){ //Cek tanggal 30
+                        tanggal = 1
+                        if(bulan >= 12){
+                            bulan = 1
+                            tahun++
+                        }else{
+                            bulan++
+                        }
+                    }else{
+                        tanggal++
+                    }
+                }
+            }
         }
     }else{
-        if(tahun % 4 == 0){ // Cek Tahun Kabisat
-            if(bulan==2){
-                if(tanggal >= 29){ //Cek tanggal 29
-                    tanggal = 1
-                    if(bulan >= 12){
-                        bulan = 1
-                        tahun++
-                    }else{
-                        bulan++
-                    }
+        if(bulan % 2 == 1){ //Cek bulan Ganjil
+            if(tanggal >= 30){ //Cek Tanggal 30
+                tanggal = 1
+                if(bulan >= 12){
+                    bulan = 1
+                    tahun++
                 }else{
-                    tanggal++
+                    bulan++
                 }
             }else{
-                if(tanggal >= 30){ //Cek tanggal 29
-                    tanggal = 1
-                    if(bulan >= 12){
-                        bulan = 1
-                        tahun++
-                    }else{
-                        bulan++
-                    }
-                }else{
-                    tanggal++
-                }
+                tanggal++
             }
-        } else{
-            if(bulan==2){
-                if(tanggal >= 28){ //Cek tanggal 28
-                    tanggal = 1
-                    if(bulan >= 12){
-                        bulan = 1
-                        tahun++
+        }else{
+            if(tahun % 4 == 0){ // Cek Tahun Kabisat
+                if(bulan==2){
+                    if(tanggal >= 29){ //Cek tanggal 29
+                        tanggal = 1
+                        if(bulan >= 12){
+                            bulan = 1
+                            tahun++
+                        }else{
+                            bulan++
+                        }
                     }else{
-                        bulan++
+                        tanggal++
                     }
                 }else{
-                    tanggal++
+                    if(tanggal >= 31){ //Cek tanggal 31
+                        tanggal = 1
+                        if(bulan >= 12){
+                            bulan = 1
+                            tahun++
+                        }else{
+                            bulan++
+                        }
+                    }else{
+                        tanggal++
+                    }
                 }
-            }else{
-                if(tanggal >= 30){ //Cek tanggal 29
-                    tanggal = 1
-                    if(bulan >= 12){
-                        bulan = 1
-                        tahun++
+            } else{
+                if(bulan==2){
+                    if(tanggal >= 28){ //Cek tanggal 28
+                        tanggal = 1
+                        if(bulan >= 12){
+                            bulan = 1
+                            tahun++
+                        }else{
+                            bulan++
+                        }
                     }else{
-                        bulan++
+                        tanggal++
                     }
                 }else{
-                    tanggal++
+                    if(tanggal >= 31){ //Cek tanggal 31
+                        tanggal = 1
+                        if(bulan >= 12){
+                            bulan = 1
+                            tahun++
+                        }else{
+                            bulan++
+                        }
+                    }else{
+                        tanggal++
+                    }
                 }
             }
         }
+
     }
 
     switch(bulan){ //Ubah Bulan Menjadi String
