@@ -9,12 +9,28 @@ var books = [
     {name: 'komik', timeSpent: 1000}
 ]
 
-var waktu = 10000
+var waktu = 4000
 
 readBooksPromise(waktu,books[0]).then((sisa) => {
+
+    if(sisa == 0) return false //Menghentikan Promise jika Sisa 0
+
     readBooksPromise(sisa,books[1]).then((sisa) => {
+
+        if(sisa == 0) return false //Menghentikan Promise jika Sisa 0
+
         readBooksPromise(sisa,books[2]).then((sisa) => {
-            readBooksPromise(sisa,books[3]).then((sisa) => {}).catch(error => console.log(error))
-        }).catch(error => console.log(error))
-    }).catch(error => console.log(error))
-}).catch(error => console.log(error))
+            
+            if(sisa == 0) return false //Menghentikan Promise jika Sisa 0
+
+            readBooksPromise(sisa,books[3]).then(sisa => {}).catch(sisa => {})
+
+        }).catch(sisa => {
+            readBooksPromise(sisa,books[3]).then((sisa) => {}).catch(sisa => {})
+        })
+    }).catch(sisa => {
+        readBooksPromise(sisa,books[2]).then((sisa) => {}).catch(sisa => {})
+    })
+}).catch(sisa => {
+    readBooksPromise(sisa,books[3]).then((sisa) => {}).catch(sisa => {})
+})

@@ -9,11 +9,20 @@ var books = [
     {name: 'komik', timeSpent: 1000}
 ]
 
-var waktu = 10000
+var waktu = 4000
 
 readBooks(waktu,books[0],(sisa) => {
+    
+    if(sisa == 0) return false //Menghentikan Callback jika Sisa 0
+
     readBooks(sisa,books[1],(sisa) => {
+        
+        if(sisa == 0) return false //Menghentikan Callback jika Sisa 0
+
         readBooks(sisa,books[2],(sisa) => {
+            
+            if(sisa == 0) return false //Menghentikan Callback jika Sisa 0
+
             readBooks(sisa,books[3],(sisa) => {})
         })
     })
