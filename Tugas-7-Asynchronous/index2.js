@@ -9,7 +9,7 @@ var books = [
     {name: 'komik', timeSpent: 1000}
 ]
 
-var waktu = 4000
+var waktu = 10000
 
 readBooksPromise(waktu,books[0]).then((sisa) => {
 
