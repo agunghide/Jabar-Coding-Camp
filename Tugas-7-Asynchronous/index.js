@@ -14,9 +14,7 @@ var waktu = 10000
 readBooks(waktu,books[0],(sisa) => {
     readBooks(sisa,books[1],(sisa) => {
         readBooks(sisa,books[2],(sisa) => {
-            readBooks(sisa,books[3],(sisa) => {
-                console.log(`Seluruh buku telah dibaca`)
-            })
+            readBooks(sisa,books[3],(sisa) => {})
         })
     })
 })
