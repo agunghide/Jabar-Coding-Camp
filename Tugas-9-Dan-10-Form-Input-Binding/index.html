@@ -32,9 +32,6 @@
             },
             computed: {
                 booksFiltered() {
-                    if (this.searchParam.length == 0) {
-                        return this.books
-                    } else {
                         let arrBooks = this.books.filter((item) => {
                             if ((item.toLowerCase().indexOf(this.searchParam.toLowerCase()) != -1)) {
                                 return item
