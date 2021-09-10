@@ -32,13 +32,12 @@
             },
             computed: {
                 booksFiltered() {
-                        let arrBooks = this.books.filter((item) => {
-                            if ((item.toLowerCase().indexOf(this.searchParam.toLowerCase()) != -1)) {
-                                return item
-                            }
-                        })
-                        return arrBooks
-                    }
+					let arrBooks = this.books.filter((item) => {
+						if ((item.toLowerCase().indexOf(this.searchParam.toLowerCase()) != -1)) {
+							return item
+						}
+					})
+					return arrBooks
                 }
             }
         })
