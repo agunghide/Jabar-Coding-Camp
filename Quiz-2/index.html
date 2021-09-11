@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" name="search" placeholder="Ketikkan kata kunci" v-model="inputData">
+        <button v-if="labelButton == 'add'" @click="save">{{ labelButton }}</button>
+        <button v-else-if="labelButton == 'edit'" @click="update" v-bind:value="indexArr">{{ labelButton }}</button>
+        <ul>
+            <li v-for="user in users">
+                {{ user.name }}
+                &nbsp;&nbsp;&nbsp;
+                <button @click="edit" v-bind:value="user.name">Edit</button> ||
+                <button @click="remove" v-bind:value="user.name">Delete</button>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                users: [
+                    { 'name': 'Muhammad Iqbal Mubarok' },
+                    { 'name': 'Roby Purwanti' },
+                    { 'name': 'Faqih Muhammad' },
+                ],
+                labelButton: 'add',
+                inputData: "",
+                indexArr: ""
+            },
+            methods: {
+                save() {
+                    if (this.inputData !== "") {
+                        this.users.push({ 'name': this.inputData })
+                        this.inputData = ""
+                    }
+                },
+                edit(event) {
+                    this.labelButton = "edit"
+                    this.inputData = event.target.value
+                    //ES6
+                    // this.indexArr = this.users.findIndex(x => x.name === event.target.value)
+                    //ES5
+                    this.indexArr = this.users.map(function (x) { return x.name; }).indexOf(event.target.value)
+                },
+                update() {
+                    this.users[this.indexArr].name = this.inputData
+                    this.labelButton = "add"
+                    this.inputData = ""
+                },
+                remove() {
+                    let konfirmasi = confirm("Anda Yakin?")
+                    if (konfirmasi) {
+                        //ES6
+                        // this.indexArr = this.users.findIndex(x => x.name === event.target.value)
+
+                        //ES5
+                        this.indexArr = this.users.map(function (x) { return x.name; }).indexOf(event.target.value)
+                        this.users.splice(this.indexArr, 1)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
