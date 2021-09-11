@@ -12,7 +12,7 @@
     <div id="app">
         <input type="text" name="search" placeholder="Ketikkan kata kunci" v-model="inputData">
         <button v-if="labelButton == 'add'" @click="save">{{ labelButton }}</button>
-        <button v-else-if="labelButton == 'edit'" @click="update" v-bind:value="indexArr">{{ labelButton }}</button>
+        <button v-else-if="labelButton == 'update'" @click="update" v-bind:value="indexArr">{{ labelButton }}</button>
         <ul>
             <li v-for="user in users">
                 {{ user.name }}
@@ -45,7 +45,7 @@
                     }
                 },
                 edit(event) {
-                    this.labelButton = "edit"
+                    this.labelButton = "update"
                     this.inputData = event.target.value
                     //ES6
                     // this.indexArr = this.users.findIndex(x => x.name === event.target.value)
