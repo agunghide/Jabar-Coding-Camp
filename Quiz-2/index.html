@@ -14,11 +14,11 @@
         <button v-if="labelButton == 'add'" @click="save">{{ labelButton }}</button>
         <button v-else-if="labelButton == 'update'" @click="update" v-bind:value="indexArr">{{ labelButton }}</button>
         <ul>
-            <li v-for="user in users">
+            <li v-for="(user,index) in users">
                 {{ user.name }}
                 &nbsp;&nbsp;&nbsp;
-                <button @click="edit" v-bind:value="user.name">Edit</button> ||
-                <button @click="remove" v-bind:value="user.name">Delete</button>
+                <button @click="edit" v-bind:value="index">Edit</button> ||
+                <button @click="remove" v-bind:value="index">Delete</button>
             </li>
         </ul>
     </div>
@@ -46,12 +46,8 @@
                 },
                 edit(event) {
                     this.labelButton = "update"
-                    this.inputData = event.target.value
-                    //ES6
-                    // this.indexArr = this.users.findIndex(x => x.name === event.target.value)
-
-                    //ES5
-                    this.indexArr = this.users.map(function (x) { return x.name; }).indexOf(event.target.value)
+                    this.inputData = this.users[event.target.value].name
+                    this.indexArr = event.target.value
                 },
                 update() {
                     this.users[this.indexArr].name = this.inputData
@@ -61,11 +57,7 @@
                 remove() {
                     let konfirmasi = confirm("Anda Yakin?")
                     if (konfirmasi) {
-                        //ES6
-                        // this.indexArr = this.users.findIndex(x => x.name === event.target.value)
-
-                        //ES5
-                        this.indexArr = this.users.map(function (x) { return x.name; }).indexOf(event.target.value)
+                        this.indexArr = event.target.value
                         this.users.splice(this.indexArr, 1)
                     }
                 }
