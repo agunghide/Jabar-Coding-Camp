@@ -132,7 +132,7 @@
                         this.$refs.address.focus()
                     }
 
-                    if (Number.isNaN(this.no_hp.length)) {
+                    if (Number.isNaN(Number(this.no_hp))) {
                         this.errors.push("Nomor Hape tidak valid")
                         this.$refs.address.focus()
                     } else if (this.no_hp.length < 10) {
