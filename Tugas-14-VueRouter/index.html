@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Belajar Vue Router</h1>
+
+        <div id="app">
+            <router-link to="/">Home</router-link>
+            <router-link to="/halaman1">Halaman 1</router-link>
+            <router-link to="/halaman2">Halaman 2</router-link>
+            <router-link to="/halaman3">Halaman 3</router-link>
+            <hr>
+            <router-view></router-view>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+
+        const Home = { template: '<div>Ini Halaman Home</div>' }
+        const Halaman1 = { template: '<div>Ini Halaman 1</div>' }
+        const Halaman2 = { template: '<div>Ini Halaman 2</div>' }
+        const Halaman3 = { template: '<div>Ini Halaman 3</div>' }
+
+        const routes = [
+            { path: '/', component: Home, alias: '/home' },
+            { path: '/halaman1', component: Halaman1 },
+            { path: '/halaman2', component: Halaman2, meta: { login: true } },
+            { path: '/halaman3', component: Halaman3, meta: { login: true, admin: true } },
+            { path: '*', redirect: '/' }
+        ]
+
+        //Kemudian kita instansiasi object Vue Router dan tambahkan routes yang sudah kita buat tadi
+        const router = new VueRouter({
+            routes
+        })
+
+
+        router.beforeEach((to, from, next) => {
+            if (to.matched.some(record => record.meta.login)) {
+                var role = ""
+                var auth = false
+
+                if (to.matched.some(record => record.meta.admin)) {
+                    if (!auth) {
+                        alert("Halaman ini hanya boleh untuk yang sudah login")
+                        next(false)
+                    } else {
+                        if (role != "admin") {
+                            alert("Halaman ini hanya boleh untuk Admin")
+                            next(false)
+                        } else {
+                            alert("Berhasil Masuk")
+                            next()
+                        }
+                    }
+                } else {
+                    if (!auth) {
+                        alert("Halaman ini hanya boleh untuk yang sudah login")
+                        next(false)
+                    } else {
+                        alert("Berhasil Masuk")
+                        next()
+                    }
+                }
+            } else {
+                next()
+            }
+        })
+
+        //Kemudian kita tambahkan object VueRouter yang kita namakan router ke object Vue
+
+        var vm = new Vue({
+            el: '#app',
+            router,
+        })
+    </script>
+</body>
+
+</html>
